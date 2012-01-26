@@ -50,7 +50,7 @@ class load_native_module:
                 origmodulepath = origmodulepath[:-1]
 
             modulepath = tempfile.mkdtemp(prefix='py_new_native_module_' + self.__name + '_')
-            modulename = os.path.basename(modulepath)
+            modulename = osp.basename(modulepath)
             self.__modulepath = modulepath
             logging.debug("Copying file " + origmodulepath)
             shutil.copy(origmodulepath, modulepath)
@@ -74,7 +74,7 @@ class load_native_module:
                 if fp:
                     fp.close()
     def __exit__(self, type, value, traceback):
-        if self.__modulepath and os.path.isdir(self.__modulepath):
+        if self.__modulepath and osp.isdir(self.__modulepath):
             logging.debug("Deleting directory: " + self.__modulepath)
             shutil.rmtree(self.__modulepath)
             # FIXME: the module should be properly dereferenced
