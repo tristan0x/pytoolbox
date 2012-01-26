@@ -4,9 +4,10 @@ PyToolBox
 Purpose is to centralize reusable code.
 
 Here is the list of existing modules:
-*   load_native_module
 
-load_native_module
+*   load\_native\_module
+
+load\_native\_module
 ------------------
 Python prevents loading a module more than once. But sometimes, you really
 need to deal with several instances of the same module.
@@ -46,5 +47,6 @@ next time :)
 
 ### Tests
 On linux only:
+
 *   Swig 1.3 and Python 2.6
 *   Swig 2.0.4 and Python 2.7.1
