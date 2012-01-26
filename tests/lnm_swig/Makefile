@@ -1,6 +1,9 @@
 PYTHON ?= python
 SWIG ?= swig
 
+CFLAGS += -fPIC
+export CFLAGS
+
 PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../..
 export PYTHONPATH
 
@@ -19,16 +22,15 @@ $(SHARED_LIBRARY_NAME): $(SHARED_LIBRARY_OBJECTS)
 $(SWIG_GENERATED_CODE): ${SWIG_INTERFACE}
 	$(SWIG) -python ${SWIG_INTERFACE}
 
-.c.o:
+.cc.o:
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(SWIG_GENERATED_CODE)		\
-	      $(SWIG_INTERFACE:.i=_wrap.o)	\
-	      $(DIST_NAME).tar.bz2
+	      $(SWIG_INTERFACE:.i=_wrap.o)
 
 distclean: clean
 	$(RM) $(SHARED_LIBRARY_NAME) *.pyc
 
-test:
+test: all
 	$(PYTHON) test.py

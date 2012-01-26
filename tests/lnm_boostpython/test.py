@@ -4,8 +4,8 @@ import sys
 from pytoolbox import *
 
 def test():
-  with load_native_module('hello') as h1, \
-      load_native_module('hello') as h2:
+  with load_native_module('_hello') as h1, \
+      load_native_module('_hello') as h2:
     h1.incrvalue()
     h1.incrvalue()
     assert h1.value() == 2

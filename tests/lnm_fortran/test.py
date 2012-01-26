@@ -12,8 +12,8 @@ def cmp_fortran_array(a1, a2):
     return True
 
 def test():
-    with load_native_module('fmodule') as fm1, \
-         load_native_module('fmodule') as fm2:
+    with load_native_module('_fmodule') as fm1, \
+         load_native_module('_fmodule') as fm2:
         if not cmp_fortran_array(fm1.data.test_array, fm2.data.test_array):
             return False
         fm1.data.test_array = [1, 2, 3, 4, 5]
