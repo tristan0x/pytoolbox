@@ -1,0 +1,6 @@
+MODULE data
+  IMPLICIT NONE
+
+  REAL, DIMENSION(5) :: test_array
+
+END MODULE data
