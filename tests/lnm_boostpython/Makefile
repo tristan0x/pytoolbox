@@ -11,7 +11,7 @@ endif
 ifdef BOOST_LIBRARY_PATH
 LDFLAGS += -Wl,-rpath=$(BOOST_LIBRARY_PATH) \
 	   -L$(BOOST_LIBRARY_PATH)
-endif BOOST_LIBRARY_PATH
+endif
 
 TARGET=_hello.so
 
