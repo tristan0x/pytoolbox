@@ -1,0 +1,4 @@
+*.so
+*.pyc
+native_module.py
+native_module_wrap.*
