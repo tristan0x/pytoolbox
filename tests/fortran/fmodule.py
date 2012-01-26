@@ -22,8 +22,9 @@ def load_native_module():
 _native_module = load_native_module()
 
 # I can not figure out why, but _native_module instance appears
-# to be the same across all loaded module.
-# but fortran modules are different in each loaded instance.
+# to be the same across all loaded modules.
+# but fortran modules are different in each instance.
+# ==> _native_module must not be used.
 
 # YOU MUST DECLARE YOUR FORTRAN MODULES BELOW.
 # --- EDIT BELOW ------------
