@@ -18,12 +18,11 @@ clean:
 
 distclean: clean
 	$(foreach subdir, $(SUBDIRS), $(MAKE) -C $(subdir) $@ ;)
-	$(RM) $(SHARED_LIBRARY_NAME) *.pyc
+	$(RM) $(SHARED_LIBRARY_NAME) *.pyc 	lib/*.pyc
 
 
 test: all
 	$(foreach subdir, $(SUBDIRS), $(MAKE) -C $(subdir) $@ ;	)
-	$(RM) -f lib/*.pyc
 
 dist: distclean
 	$(RM) -r $(DIST_NAME)
