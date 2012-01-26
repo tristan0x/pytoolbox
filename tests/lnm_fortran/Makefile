@@ -16,6 +16,6 @@ clean:
 distclean: clean
 	$(RM) $(PYMODULE).so *.pyc
 
-test:
+test: all
 	@echo PYTHONPATH $(PYTHONPATH)
 	$(PYTHON) test.py

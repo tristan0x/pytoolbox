@@ -3,7 +3,7 @@ PYTHON ?= python
 PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../..
 export PYTHONPATH
 
-CPPFLAGS += -DBOOST_PYTHON_DYNAMIC_LIB
+CPPFLAGS += -DBOOST_PYTHON_DYNAMIC_LIB -fPIC
 CPPFLAGS += -I$(shell $(PYTHON) -c "import distutils.sysconfig as s; print s.get_python_inc()")
 
 ifdef BOOST_INCLUDE_PATH
@@ -33,7 +33,7 @@ clean:
 distclean: clean
 	$(RM) $(TARGET)
 
-test:
+test: all
 	$(PYTHON) test.py
 
 poeut:
