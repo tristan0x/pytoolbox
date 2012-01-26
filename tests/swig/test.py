@@ -20,6 +20,7 @@ def test():
             if len(set(map(lambda m: m.cvar.value,
                            [nm1, nm2, nm3]))) != 3:
                 return False
+    return True
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
