@@ -7,7 +7,7 @@ export PYTHON
 DIST_NAME = py_load_native_module_more_than_once
 DIST_FILES = $(SUBDIRS) Makefile
 
-SUBDIRS = tests lib
+SUBDIRS = tests
 
 all:
 	$(foreach subdir, $(SUBDIRS), $(MAKE) -C $(subdir) $@ ;)
@@ -23,6 +23,7 @@ distclean: clean
 
 test: all
 	$(foreach subdir, $(SUBDIRS), $(MAKE) -C $(subdir) $@ ;	)
+	$(RM) -f lib/*.pyc
 
 dist: distclean
 	$(RM) -r $(DIST_NAME)
