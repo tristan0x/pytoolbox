@@ -1,6 +1,9 @@
 PYTHON ?= python
 SWIG ?= swig
 
+PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../../lib
+export PYTHONPATH
+
 SWIG_INTERFACE = native_module.i
 SWIG_GENERATED_CODE = $(SWIG_INTERFACE:.i=.py) $(SWIG_INTERFACE:.i=_wrap.c)
 SHARED_LIBRARY_NAME = _$(SWIG_INTERFACE:.i=.so)

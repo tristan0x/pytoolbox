@@ -1,8 +1,6 @@
 
 CFLAGS ?= -fPIC
 export CFLAGS
-PYTHONPATH := $(PYTHONPATH):$(PWD)/lib
-export PYTHONPATH
 
 SUBDIRS = tests
 
@@ -30,7 +28,3 @@ dist: distclean
 	cp -r $(DIST_FILES) $(DIST_NAME)
 	tar jcf $(DIST_NAME).tar.bz2 $(DIST_NAME)
 	$(RM) -r $(DIST_NAME)
-
-
-# To put in the documentation:
-# Tested with swig 2.0.4 and python 2.7.1

@@ -1,5 +1,7 @@
 
 PYTHON ?= python
+PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../../lib
+export PYTHONPATH
 
 CPPFLAGS += -DBOOST_PYTHON_DYNAMIC_LIB
 CPPFLAGS += -I$(shell $(PYTHON) -c "import distutils.sysconfig as s; print s.get_python_inc()")
@@ -33,3 +35,6 @@ distclean: clean
 
 test:
 	$(PYTHON) test.py
+
+poeut:
+	@echo $(PYTHONPATH)
