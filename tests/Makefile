@@ -1,6 +1,6 @@
 PYTHON ?= python
 
-SUBDIRS = fortran swig # boostpython embeddedpython
+SUBDIRS = fortran swig boostpython # embeddedpython
 
 
 all clean distclean test:
