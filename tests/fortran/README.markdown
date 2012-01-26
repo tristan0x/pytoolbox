@@ -5,9 +5,9 @@ module with the fonction `load_native_module`:
 prefixed by _
 1.  Copy paste file `fmodule.py' in the path of the shared library.
 1.  Rename it against the module (without the leading _)
-1.  Edit it to declare the modules of your fortran module.
+1.  Edit it to declare your fortran modules.
 
-Say your Python module is foo, you should have the following files:
+Say your Python module is `foo`, you should have the following files:
 
     $ ls
     foo.py _foo.so
@@ -16,6 +16,6 @@ Now run the following test to make sure you can access your modules:
 
     $ python
     >>> import foo
-    >>> dir(foo.a_module)
+    >>> dir(foo.ONE_OF_YOUR_MODULE)
 
-Now, it is usable with `load_native_module`.
+That's it, you are ready to use `load_native_module`.
