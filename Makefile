@@ -21,3 +21,8 @@ test: all
 
 distcheck: distclean all distclean
 	python setup.py sdist
+
+pydoc:
+	rm -rf html
+	mkdir html
+	cd html && PYTHONPATH=.. pydoc -w pytoolbox pytoolbox.multi_imp
