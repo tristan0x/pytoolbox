@@ -7,6 +7,12 @@ Here is the list of existing modules:
 
 *   load\_native\_module
 
+How to install?
+---------------
+
+PyToolBox is a standard distutils package. To install it:
+
+    $ python setup.py install
 
 How to build the tests?
 -----------------------
@@ -75,4 +81,3 @@ On linux only:
 
 *   Swig 1.3 and Python 2.6
 *   Swig 2.0.4 and Python 2.7.1
-
