@@ -1,12 +1,12 @@
 PYTHON ?= python
+F2PY ?= f2py
 
 PYMODULE = _fmodule
 
 all: $(PYMODULE).so
 
 $(PYMODULE).so: test.f90
-	f2py -c test.f90 -m $(PYMODULE)
-
+	$(F2PY) -c test.f90 -m $(PYMODULE)
 
 clean:
 

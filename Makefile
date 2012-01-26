@@ -1,13 +1,13 @@
 
-PYTHON ?= python
+CFLAGS ?= -fPIC
+export CFLAGS
 PYTHONPATH := $(PYTHONPATH):$(PWD)/lib
 export PYTHONPATH
-export PYTHON
+
+SUBDIRS = tests
 
 DIST_NAME = py_load_native_module_more_than_once
 DIST_FILES = $(SUBDIRS) Makefile
-
-SUBDIRS = tests
 
 all:
 	$(foreach subdir, $(SUBDIRS), $(MAKE) -C $(subdir) $@ ;)
