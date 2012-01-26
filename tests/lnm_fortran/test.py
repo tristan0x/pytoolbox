@@ -1,7 +1,7 @@
-
-from load_native_module import *
 import logging
 import sys
+
+from pytoolbox import *
 
 def cmp_fortran_array(a1, a2):
     if len(a1) != len(a2):

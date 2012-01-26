@@ -1,7 +1,7 @@
-
-from load_native_module import *
 import logging
 import sys
+
+from pytoolbox import *
 
 def test():
     with load_native_module('native_module') as nm1, \

@@ -1,7 +1,7 @@
-
 import logging
 import sys
-from load_native_module import *
+
+from pytoolbox import *
 
 def test():
   with load_native_module('hello') as h1, \

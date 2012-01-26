@@ -1,7 +1,7 @@
 PYTHON ?= python
 SWIG ?= swig
 
-PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../../lib
+PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../..
 export PYTHONPATH
 
 SWIG_INTERFACE = native_module.i

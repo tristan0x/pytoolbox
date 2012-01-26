@@ -1,6 +1,6 @@
 
 PYTHON ?= python
-PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../../lib
+PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../..
 export PYTHONPATH
 
 CPPFLAGS += -DBOOST_PYTHON_DYNAMIC_LIB

@@ -29,7 +29,7 @@ That's it, you are ready to deal with multiple instances of the native
 library within the same Python process:
 
     $ python
-    >>> from load_native_module import *
+    >>> from pytoolbox import *
     >>> with load_native_module('fmodule') as fmodule1, \
     ...      load_native_module('fmodule') as fmodule2:
     ...    # do stuff

@@ -1,7 +1,7 @@
 PYTHON ?= python
 F2PY ?= f2py
 
-PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../../lib
+PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../..
 export PYTHONPATH
 
 PYMODULE = _fmodule
