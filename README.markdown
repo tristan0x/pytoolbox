@@ -19,13 +19,13 @@ with a pure Python module, it's pretty easy:
         sys.modules.pop(name, None)
         __import__(name)
 
-But when it comes to import native libraries more than once, it's a different story.
+But when it comes to import native libraries, it's a different story.
 It turns out a Python module's hash key is the absolute path to that module.
 So to get n instances of the same module, a workaround is to have n versions
 of the files on your filesystem in different locations.
 
 This is what this function is doing : each time a new instance of a module
-is asked, it copies both Python module and its shared library in a fresh new
+is asked, it copies both Python module and its shared library in a fresh temporary
 directory and load it as a new module.
 
 `load_native_library` can not load directly the shared library. You need to write
