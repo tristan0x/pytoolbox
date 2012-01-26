@@ -13,39 +13,8 @@ import textwrap
 __all__ = ['load_native_module']
 
 class load_native_module:
-    """
-Python is "smart" because it prevents loading a module more than once.
-Yeah this is so cool thank you very much little snake.
-But what if you really need to deal with instances of the same module?
+    """Return an instance of a new imported module"""
 
-With a `classic' python module, this is actually pretty easy:
-def classic_module(name):
-    assert(isinstance(name, str))
-    sys.modules.pop(name, None)
-    __import__(name)
-
-But when it comes to loading native libraries, it's a different story.
-It turns out a Python module's hash key is the absolute path to that module.
-So to get n instances of the same module, a workaround is to have n versions
-of the files on your filesystem in different locations.
-
-This is what this class intend to do: each time a new instance of a module
-is asked, it copies both Python module and its shared library in a fresh new
-directory and load it as a new module.
-
-Usage:
-------
-
-    with load_native_module('a_swig_generated_module') as m:
-        # do stuff
-        # [...]
-    # At this point, the temporary directory is deleted.
-
-Notes:
------
-If a module submitted to `load_native_module' has not been loaded yet,
-the function uses the `classic' module load. But things will get dirty
-next time :)
 
 Limitations:
 ------------
@@ -55,10 +24,6 @@ TODO: create a dumb a C extension and update `load_native_module' accordingly:
   else:
     look for the shared library path instead of picking it in the same directory
     than the Python module.
-
-Tested only on Linux 2.6:
-- Swig 1.3 and Python 2.6
-- Swig 2.0.4 and Python 2.7.1
     """
 
     def __init__(self, name, tempdir=None):
@@ -68,9 +33,6 @@ Tested only on Linux 2.6:
 
         if name.startswith('_'):
             raise ImportError(textwrap.dedent("""
-    Can not load native library directly with this helper function.
-    Instead create a python module named after the native library importing
-    this native library. (like swig does)
   """))
 
     def __enter__(self):
