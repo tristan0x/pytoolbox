@@ -12,21 +12,23 @@ import textwrap
 
 __all__ = ['load_native_module']
 
+# TODO: create a dumb a C extension and update `load_native_module' accordingly:
+#   if the module's name to load starts with `_' (a native one):
+#     only copy the shared library
+#   else:
+#     look for the shared library path instead of picking it in the same directory
+#     than the Python module.
+
 class load_native_module:
-    """Return an instance of a new imported module"""
+    """Return a new instance of a module
+    This class is meant to be used within a "with" context, ex:
 
-
-Limitations:
-------------
-TODO: create a dumb a C extension and update `load_native_module' accordingly:
-  if the module's name to load starts with `_' (a native one):
-    only copy the shared library
-  else:
-    look for the shared library path instead of picking it in the same directory
-    than the Python module.
+    with load_native_module('myfortranmodule') as m:
+        # do stuff
     """
 
-    def __init__(self, name, tempdir=None):
+    def __init__(self, name):
+        """name: name of the module to import"""
         assert isinstance(name, str)
         self.__name = name
         self.__modulepath = None
