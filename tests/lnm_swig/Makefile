@@ -1,11 +1,10 @@
-PYTHON ?= python
-SWIG ?= swig
+ifeq ($(shell [ -f ../../env.mk ] && echo 1),1)
+include ../../env.mk
+else
+$(error Missing file ../../env.mk, please run command ./bootstrap.sh)
+endif
 
-CFLAGS += -fPIC
-export CFLAGS
-
-PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../..
-export PYTHONPATH
+export PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../..
 
 SWIG_INTERFACE = native_module.i
 SWIG_GENERATED_CODE = $(SWIG_INTERFACE:.i=.py) $(SWIG_INTERFACE:.i=_wrap.c)

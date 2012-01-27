@@ -1,9 +1,12 @@
+ifeq ($(shell [ -f ../../env.mk ] && echo 1),1)
+include ../../env.mk
+else
+$(error Missing file ../../env.mk, please run command ./bootstrap.sh)
+endif
 
-PYTHON ?= python
-PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../..
-export PYTHONPATH
+export PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../..
 
-CPPFLAGS += -DBOOST_PYTHON_DYNAMIC_LIB -fPIC
+CPPFLAGS += -DBOOST_PYTHON_DYNAMIC_LIB
 CPPFLAGS += -I$(shell $(PYTHON) -c "import distutils.sysconfig as s; print s.get_python_inc()")
 
 ifdef BOOST_INCLUDE_PATH

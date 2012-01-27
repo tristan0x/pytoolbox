@@ -1,10 +1,12 @@
-PYTHON ?= python
+
+ifeq ($(shell [ -f env.mk ] && echo 1),1)
+include env.mk
+else
+$(error Missing file env.mk, please run command ./bootstrap.sh)
+endif
 
 PYMAJORMINOR = $(shell python -c \
   "import sys; v = sys.version_info ; print '%i.%i' % (v[0], v[1])")
-
-CFLAGS ?= -fPIC
-export CFLAGS
 
 SUBDIRS = tests
 
@@ -13,11 +15,12 @@ all:
 
 clean:
 	$(foreach subdir, $(SUBDIRS), $(MAKE) -C $(subdir) $@ ;)
-	$(RM) $(DIST_NAME).tar.bz2
+	$(RM) $(SHARED_LIBRARY_NAME) *.pyc 	pytoolbox/*.pyc
 
 distclean: clean
 	$(foreach subdir, $(SUBDIRS), $(MAKE) -C $(subdir) $@ ;)
-	$(RM) $(SHARED_LIBRARY_NAME) *.pyc 	pytoolbox/*.pyc
+	$(RM) -r dist\
+
 
 
 test: all

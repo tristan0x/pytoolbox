@@ -1,8 +1,10 @@
-PYTHON ?= python
-F2PY ?= f2py
+ifeq ($(shell [ -f ../../env.mk ] && echo 1),1)
+include ../../env.mk
+else
+$(error Missing file ../../env.mk, please run command ./bootstrap.sh)
+endif
 
-PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../..
-export PYTHONPATH
+export PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../..
 
 PYMODULE = fmodule
 

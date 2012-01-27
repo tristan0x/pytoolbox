@@ -17,26 +17,12 @@ PyToolBox is a standard distutils package. To install it:
 How to build the tests?
 -----------------------
 
-Simply run the command `make test`. It will build and run all tests.
+Use the configure script to reference tools and paths if not defined in standard location:
+    $ ./configure
 
-By default, the following tools and libraries are required:
+Documentation available via `./configure --help`
 
-*    gcc
-*    swig
-*    a fortran 90 compiler
-*    f2py
-*    Boost.Python
-
-It assumes everything is located in standard directories a.k.a `/usr` or `/usr/local`. If this is not the case, you can force location of tools / libraries by setting the following environment variables:
-
-*    `CC`: path to gcc
-*    `PYTHON`: path to python
-*    `SWIG`: path to swig
-*    `F2PY`: path to f2py
-*    `BOOST_INCLUDE_PATH`: location of Boost headers
-*    `BOOST_LIBRARY_PATH`: location of Boost shared libraries.
-
-By default, all tests are built and run. tests suites are located in the `tests` sub-directory. To desactivate a test, set the environment variable: `NO_TEST_<TESTNAME>`, for example `NO_TEST_LNM_FORTRAN`.
+Then execute the command `make test` to build and run tests.
 
 ### load\_native\_module
 
