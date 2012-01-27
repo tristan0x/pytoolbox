@@ -1,3 +1,7 @@
+PYTHON ?= python
+
+PYMAJORMINOR = $(shell python -c \
+  "import sys; v = sys.version_info ; print '%i.%i' % (v[0], v[1])")
 
 CFLAGS ?= -fPIC
 export CFLAGS
@@ -20,6 +24,10 @@ test: all
 	$(foreach subdir, $(SUBDIRS), $(MAKE) -C $(subdir) $@ ;	)
 
 distcheck: distclean all distclean
+	tmp=`mktemp -d` && \
+	python setup.py install --prefix $$tmp && \
+	PYTHONPATH=$$tmp/lib/python$(PYMAJORMINOR)/site-packages \
+	  $(MAKE) test && \
 	python setup.py sdist
 
 pydoc:
