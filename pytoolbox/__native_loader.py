@@ -1,9 +1,11 @@
+# This is file is a template used by `multi_imp.load_native_module`.
+# Do not use it directly.
 #
-# This module contains symbols defined in the native library
-# located in the same directory and named like the module but with a leading _
+# Purpose of this module is to import a native library and put all its symbols
+# in the module.
 #
 # It is meant to be used with function `load_native_module` which
-# copy this module and its shared library in a temporary directory
+# copy this module and a shared library in a temporary directory
 # so that Python believes it does not have loaded this module yet.
 #
 
@@ -14,7 +16,7 @@ def __feed_current_module():
     import os.path as osp
     import sys
     import imp
-    native_module_name = '_' + osp.splitext(osp.basename(__file__))[0]
+    native_module_name = '%(nativemod)s'
     fp, pathname, description = imp.find_module(native_module_name,
                                                 [osp.dirname(__file__)])
     if fp is not None:
@@ -24,7 +26,7 @@ def __feed_current_module():
         finally:
             fp.close()
     else:
-        raise 'Could not find native module: %s' % native_module_name
+        raise 'Could not find native module: ' + native_module_name
 
     # get all symbols of the native module and put them in the current module
     for s in filter(lambda s: s not in set(['__doc__', '__file__',
