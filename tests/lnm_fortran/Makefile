@@ -4,7 +4,7 @@ F2PY ?= f2py
 PYTHONPATH := $(PYTHONPATH):$(shell pwd)/../..
 export PYTHONPATH
 
-PYMODULE = _fmodule
+PYMODULE = fmodule
 
 all: $(PYMODULE).so
 

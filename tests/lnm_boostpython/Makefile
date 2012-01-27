@@ -15,7 +15,7 @@ LDFLAGS += -Wl,-rpath=$(BOOST_LIBRARY_PATH) \
 	   -L$(BOOST_LIBRARY_PATH)
 endif
 
-TARGET=_hello.so
+TARGET=hello.so
 
 all: $(TARGET)
 

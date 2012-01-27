@@ -16,7 +16,7 @@ void incrvalue()
   ++value;
 }
 
-BOOST_PYTHON_MODULE(_hello)
+BOOST_PYTHON_MODULE(hello)
 {
   boost::python::def("incrvalue", incrvalue);
   boost::python::def("value", getvalue);
